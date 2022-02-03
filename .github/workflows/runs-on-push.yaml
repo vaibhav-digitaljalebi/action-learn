@@ -19,11 +19,11 @@ jobs:
 #       uses: actions/checkout@v2
 
     - name: Pushes test file
-#       uses: vaibhav-digitaljalebi/action-learn@master
+      uses: vaibhav-digitaljalebi/action-learn@master
       env:
         API_TOKEN_GITHUB: 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
     - run: git remote add carbon-copy https://github.com/vaibhav-digitaljalebi/action-learn-1.git
-    - run: git push carbon-copy main
+    - run: git pull original master && git push carbon-copy master
 #       with:
 #         source_file: 'test2.md'
 #         destination_repo: 'vaibhav-digitaljalebi/action-learn-1@main'

@@ -1,4 +1,7 @@
+name: Test
+description: 'composite run action'
 
+<<<<<<< HEAD
 # name: run-on-push
 # on: [push]
 # jobs:
@@ -32,3 +35,7 @@ jobs:
 #         user_email: 'vaibhav.shanker@digitaljalebi.com'
 #         user_name: 'vaibhav-digitaljalebi'
 #         commit_message: 'A custom message for the commit'
+=======
+runs:
+  using: "composite"
+>>>>>>> a7edd3859f1f1140af3c411120d4dcbaf574914a

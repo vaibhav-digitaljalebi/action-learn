@@ -1,4 +1,11 @@
-name: vaibhav shanker
+name: Test
+description: 'composite run action'
 
-jobs:
-  run: echo 'yoyoyo'
+runs:
+  using: "composite"
+  steps: 
+    steps:
+    - name: Echo
+      shell: bash
+      run: |
+        echo Heyyyyy

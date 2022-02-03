@@ -1,46 +1,74 @@
-name: Test
-description: 'composite run action'
-
-<<<<<<< HEAD
-<<<<<<< HEAD
-# name: run-on-push
-# on: [push]
-# jobs:
-#   production-deploy:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - run: git remote add carbon-copy https://github.com/vaibhav-digitaljalebi/action-learn-1.git
-#       - run: git push carbon-copy main
+# # name: run-on-push
+# # on: [push]
+# # jobs:
+# #   production-deploy:
+# #     runs-on: ubuntu-latest
+# #     steps:
+# #       - run: git remote add carbon-copy https://github.com/vaibhav-digitaljalebi/action-learn-1.git
+# #       - run: git push carbon-copy main
       
-name: push-to-another-repo
+# name: push-to-another-repo
 
-on: push
+# on: push
+
+# jobs:
+#   push-to-another-repo:
+#     runs-on: ubuntu-latest
+#     env:
+#       API_TOKEN_GITHUB: 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
+#     steps:
+#       - uses: actions/checkout@v1
+# #       - uses: r-lib/actions/check-r-package@master
+# #       - uses: vaibhav-digitaljalebi/action-learn@master
+#       - run: git remote add original https://github.com/vaibhav-digitaljalebi/action-learn.git
+#       - run: git remote add carbon-copy https://github.com/vaibhav-digitaljalebi/action-learn-1.git
+#       - run: git pull original master && git push carbon-copy master
+      
+# #       with:
+# #         source_file: 'test2.md'
+# #         destination_repo: 'vaibhav-digitaljalebi/action-learn-1@main'
+# #         destination_folder: 'test-dir'
+# #         user_email: 'vaibhav.shanker@digitaljalebi.com'
+# #         user_name: 'vaibhav-digitaljalebi'
+# #         commit_message: 'A custom message for the commit'
+# =======
+# runs:
+#   using: "composite"
+# >>>>>>> a7edd3859f1f1140af3c411120d4dcbaf574914a
+# =======
+# runs:
+#   using: "composite"
+# >>>>>>> a7edd3859f1f1140af3c411120d4dcbaf574914a
+
+
+
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+on: [push]
 
 jobs:
-  push-to-another-repo:
+  build:
     runs-on: ubuntu-latest
-    env:
-      API_TOKEN_GITHUB: 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
+    # container: pandoc/latex
     steps:
-      - uses: actions/checkout@v1
-#       - uses: r-lib/actions/check-r-package@master
-#       - uses: vaibhav-digitaljalebi/action-learn@master
-      - run: git remote add original https://github.com/vaibhav-digitaljalebi/action-learn.git
-      - run: git remote add carbon-copy https://github.com/vaibhav-digitaljalebi/action-learn-1.git
-      - run: git pull original master && git push carbon-copy master
-      
-#       with:
-#         source_file: 'test2.md'
-#         destination_repo: 'vaibhav-digitaljalebi/action-learn-1@main'
-#         destination_folder: 'test-dir'
-#         user_email: 'vaibhav.shanker@digitaljalebi.com'
-#         user_name: 'vaibhav-digitaljalebi'
-#         commit_message: 'A custom message for the commit'
-=======
-runs:
-  using: "composite"
->>>>>>> a7edd3859f1f1140af3c411120d4dcbaf574914a
-=======
-runs:
-  using: "composite"
->>>>>>> a7edd3859f1f1140af3c411120d4dcbaf574914a
+      - uses: actions/checkout@v2
+      # - name: Install mustache (to update the date)
+        # run:  apk add ruby && gem install mustache
+      # - name: creates output
+        # run:  sh ./build.sh
+      # - name: Pushes to another repository
+        # id: push_directory
+        uses: vaibhav-digitaljalebi/action-learn@master
+        env:
+          API_TOKEN_GITHUB: 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
+        with:
+          # source-directory: output/
+          destination-github-username: 'vaibhav-digitaljalebi'
+          destination-repository-name: 'action-learn-1'
+          user-email: vaibhav.shanker@digitaljalebi.com
+          commit-message: See ORIGIN_COMMIT from $GITHUB_REF
+          target-branch: master
+      - name: Test get variable exported by push-to-another-repository
+        run: echo $DESTINATION_CLONED_DIRECTORY

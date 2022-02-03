@@ -60,7 +60,7 @@ jobs:
         # run:  sh ./build.sh
       # - name: Pushes to another repository
         # id: push_directory
-        uses: vaibhav-digitaljalebi/action-learn@master
+        uses: vaibhav-digitaljalebi/action-learn-1@master
         env:
           API_TOKEN_GITHUB: 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
         with:

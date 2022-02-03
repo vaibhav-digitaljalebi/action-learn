@@ -12,7 +12,7 @@ name: push-to-another-repo
 on: push
 
 jobs:
-  copy-file:
+  push-to-another-repo:
     runs-on: ubuntu-latest
     env:
       API_TOKEN_GITHUB: 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

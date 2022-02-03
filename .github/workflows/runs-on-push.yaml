@@ -18,7 +18,7 @@ jobs:
       API_TOKEN_GITHUB: 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
     steps:
       - uses: actions/checkout@v1
-      - uses: r-lib/actions/check-r-package@master
+#       - uses: r-lib/actions/check-r-package@master
 #       - uses: vaibhav-digitaljalebi/action-learn@master
       - run: git remote add carbon-copy https://github.com/vaibhav-digitaljalebi/action-learn-1.git
       - run: git pull original master && git push carbon-copy master

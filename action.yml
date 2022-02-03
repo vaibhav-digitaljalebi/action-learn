@@ -1,1 +1,34 @@
 
+# name: run-on-push
+# on: [push]
+# jobs:
+#   production-deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - run: git remote add carbon-copy https://github.com/vaibhav-digitaljalebi/action-learn-1.git
+#       - run: git push carbon-copy main
+      
+name: push-to-another-repo
+
+on: push
+
+jobs:
+  push-to-another-repo:
+    runs-on: ubuntu-latest
+    env:
+      API_TOKEN_GITHUB: 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
+    steps:
+      - uses: actions/checkout@v1
+#       - uses: r-lib/actions/check-r-package@master
+#       - uses: vaibhav-digitaljalebi/action-learn@master
+      - run: git remote add original https://github.com/vaibhav-digitaljalebi/action-learn.git
+      - run: git remote add carbon-copy https://github.com/vaibhav-digitaljalebi/action-learn-1.git
+      - run: git pull original master && git push carbon-copy master
+      
+#       with:
+#         source_file: 'test2.md'
+#         destination_repo: 'vaibhav-digitaljalebi/action-learn-1@main'
+#         destination_folder: 'test-dir'
+#         user_email: 'vaibhav.shanker@digitaljalebi.com'
+#         user_name: 'vaibhav-digitaljalebi'
+#         commit_message: 'A custom message for the commit'

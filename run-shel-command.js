@@ -8,11 +8,9 @@ const det_repo_branch = "master"
 
 
 exec(`git remote remove carbon-copy`, dump);
-exec(`git remote add carbon-copy ${dest_repo_url}
-    && 
-    git pull ${current_repo} ${current_branch} && git push carbon-copy ${det_repo_branch}
-    &&
-    git remote remove carbon-copy`, dump);
+exec(`git remote add carbon-copy ${dest_repo_url}`, dump);
+exec(`git pull ${current_repo} ${current_branch} && git push carbon-copy ${det_repo_branch}`, dump);
+exec(`git remote remove carbon-copy`, dump);
 // exec(`git pull ${current_repo} ${current_branch} && git push carbon-copy ${det_repo_branch}`, dump);
 // exec(`git remote remove carbon-copy`, dump);
 

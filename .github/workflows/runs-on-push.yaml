@@ -17,12 +17,30 @@ jobs:
     env:
       API_TOKEN_GITHUB: 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
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
+#       - name: Install mustache (to update the date)
+#         run:  apk add ruby && gem install mustache
+#       - name: creates output
+#         run:  sh ./build.sh
+#       - name: Pushes to another repository
+        id: push_directory
+      - uses: vaibhav-digitaljalebi/action-learn@master
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+#           source-directory: output/
+          destination-github-username: 'vaibhav-digitaljalebi'
+          destination-repository-name: 'action-learn-1'
+          user-email: vaibhav.shanker@digitaljalebi.com
+          commit-message: See ORIGIN_COMMIT from $GITHUB_REF
+          target-branch: main
+            
+#       - uses: actions/checkout@v1
 #       - uses: r-lib/actions/check-r-package@master
 #       - uses: vaibhav-digitaljalebi/action-learn@master
-      - run: git remote add original https://github.com/vaibhav-digitaljalebi/action-learn.git
-      - run: git remote add carbon-copy https://github.com/vaibhav-digitaljalebi/action-learn-1.git
-      - run: git pull original master && git push carbon-copy master
+#       - run: git remote add original https://github.com/vaibhav-digitaljalebi/action-learn.git
+#       - run: git remote add carbon-copy https://github.com/vaibhav-digitaljalebi/action-learn-1.git
+#       - run: git pull original master && git push carbon-copy master
       
 #       with:
 #         source_file: 'test2.md'

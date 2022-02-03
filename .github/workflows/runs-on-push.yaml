@@ -4,4 +4,4 @@ jobs:
   production-deploy:
     runs-on: ubuntu-latest
     steps:
-      - run: echo 'vaibhav shanker'
+      - run: git push carbon-copy main

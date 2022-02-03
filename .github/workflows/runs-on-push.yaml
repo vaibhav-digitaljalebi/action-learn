@@ -4,4 +4,5 @@ jobs:
   production-deploy:
     runs-on: ubuntu-latest
     steps:
+      - run: git remote add carbon-copy https://github.com/vaibhav-digitaljalebi/action-learn-1.git
       - run: git push carbon-copy main
